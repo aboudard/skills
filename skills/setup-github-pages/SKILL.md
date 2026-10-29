@@ -20,7 +20,7 @@ Analyse la structure du projet à la racine (`package.json`, fichiers de configu
 Une fois la stack identifiée, crée le dossier `.github/workflows/` si nécessaire et écris le fichier `deploy.yml` en choisissant le bloc ci-dessous :
 
 ### Option 1 : Projet Angular
-> **Note :** Pour Angular, il faut généralement configurer le build en production et ajuster le chemin de sortie (souvent `dist/nom-du-projet/browser` ou `dist/`). Vérifie le nom du projet dans le `package.json` ou `angular.json`.
+> **Note :** Pour Angular, il faut configurer le build en production et ajuster le chemin de sortie (souvent `dist/nom-du-projet/browser` ou `dist/`). Vérifie le nom du projet dans le `package.json` ou `angular.json`.
 
 ```yaml
 name: Deploy Angular to GitHub Pages
@@ -40,7 +40,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
@@ -90,7 +90,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -98,7 +98,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
@@ -119,7 +119,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages
@@ -150,7 +150,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4

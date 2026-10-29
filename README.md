@@ -36,6 +36,26 @@ Idéal si vous souhaitez que le skill soit attaché uniquement à un dépôt sp�
 npx skills@latest add aboudard/skills --skill=setup-github-pages
 ```
 
+## 🔄 Mise à jour du skill (déjà installé)
+
+Si le skill est déjà présent dans votre projet, il suffit de relancer la commande `add` pour récupérer la version la plus récente.
+
+### Mise à jour locale (dans le projet courant)
+
+Depuis la racine du projet :
+
+```bash
+npx skills@latest add aboudard/skills --skill=setup-github-pages
+```
+
+### Mise à jour globale (si vous l'avez installé en global)
+
+```bash
+npx skills@latest add aboudard/skills --skill=setup-github-pages --global
+```
+
+> Conseil : après mise à jour, redémarrez votre session/agent dans l'éditeur pour garantir le rechargement de la nouvelle version du skill.
+
 ---
 
 ## 🛠️ Structure du dépôt
