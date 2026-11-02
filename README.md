@@ -2,7 +2,7 @@
 
 Ce dépôt contient des **skills** normalisés (selon la norme ouverte [agentskills.io](https://agentskills.io)) pour automatiser des tâches de développement à l'aide de votre assistant IA.
 
-Le premier skill disponible est **`setup-github-pages`**.
+Skills disponibles : **`setup-github-pages`** et **`setup-sonarqube`**.
 
 ---
 
@@ -14,6 +14,24 @@ Lorsqu'il est invoqué sur un projet, ce skill analyse automatiquement sa struct
 3. **HTML / CSS / JS Statique pur** : Propose un déploiement direct de fichiers statiques.
 
 Il génère ensuite automatiquement le workflow GitHub Actions correspondant dans `.github/workflows/deploy.yml` et vous guide sur la configuration de la source de déploiement.
+
+## 🔎 Ce que fait le skill `setup-sonarqube`
+
+Le skill **`setup-sonarqube`** analyse le build, les tests, la couverture, la CI et les éventuels modules d'un dépôt, puis prépare une intégration SonarQube adaptée. Il aide à choisir entre SonarQube Cloud et un serveur existant, réutilise le scanner approprié, configure les workflows et paramètres nécessaires, et distingue la validation locale d'une analyse distante réussie.
+
+Il ne déploie pas de serveur, ne crée pas de secrets et demande confirmation avant de rendre un quality gate bloquant avant fusion. Les valeurs de couverture et les exclusions doivent correspondre au dépôt réel.
+
+Installation globale :
+
+```bash
+npx skills@latest add aboudard/skills --skill=setup-sonarqube --global
+```
+
+Installation locale :
+
+```bash
+npx skills@latest add aboudard/skills --skill=setup-sonarqube
+```
 
 ---
 
@@ -64,6 +82,8 @@ npx skills@latest add aboudard/skills --skill=setup-github-pages --global
 .
 ├── README.md
 └── skills
-    └── setup-github-pages
+    ├── setup-github-pages
+    │   └── SKILL.md
+    └── setup-sonarqube
         └── SKILL.md
 ```
